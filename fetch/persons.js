@@ -8,6 +8,7 @@ class Persons{
         .then(response => 
            response.json()
         )
+        .catch(error => console.log(error.message));
     }
 }
 module.exports = new Persons
