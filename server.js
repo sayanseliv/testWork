@@ -4,10 +4,11 @@ const port = 7070;
 const bodyParser = require("body-parser");
 
 const persons = require("./fetch/persons");
-const { data } = require("jquery");
+const { response } = require("express");
+// const { data } = require("jquery");
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use(bodyParser.json({ type: "application/json" }));
 
 
@@ -23,6 +24,12 @@ app.use(function (req, res, next) {
   next();
 });
 
+  // app.get("/", function (req, res) {
+    // res.render('index', function (err, html) {
+      // res.send(html)
+    // })
+// })
+
 app.get("/api/persons", function (req, res) {
   if (res.statusCode !== 200) {
     throw Error(`Something Wrong`);
@@ -31,20 +38,10 @@ app.get("/api/persons", function (req, res) {
     .fetchPersons()
     .then((data) => {
       let personData = Object.assign({}, data);
-      return personData;
+      return res.json(personData);
     })
-    .then((data) => {
-
-      res.json(data);
-
-    });
 });
 
-app.get("/", function (req, res) {
-  res.render('index', function (err, html) {
-    res.send(html)
-  })
-});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

@@ -1,0 +1,19 @@
+html {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(23, 74, 83);
+}
+#app {
+  display: flex;
+  flex-direction: column;
+}
+.persons {
+  margin: 2px 0 2px 0;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(129, 151, 28, 0.124);
+  border: 2px solid rgb(55, 121, 114);
+}
