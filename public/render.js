@@ -20,11 +20,14 @@ function fetchRender() {
     .then(data => {
       const html = data.data.map(info => {
           return `
+          
         <div class = "persons" id="${info.id}">
-        <div class="card" style="width: 18rem;">
-        <p><img src= "${info.avatar}" alt="${info.first_name}"/></p>
-        <p>Name:${info.first_name}</p>
-        <p>Email:${info.email}</p>
+        <div class="card border border-danger mx-2 my-2"  style="width: 18rem;">
+        <img src="${info.avatar}" class="card-img-top" alt="${info.first_name}">
+        <div class="card-body">
+        <h5 class="card-title">Name: ${info.first_name}</h5>
+        <p class="card-text">Email: ${info.email}</p>
+        </div>
         </div>
         </div>
         `;
@@ -35,7 +38,6 @@ function fetchRender() {
     .catch(err => console.log('Request Failed', err));
 }
 fetchRender()
-
 
 function postRender() {
     fetch("https://reqres.in/api/users", {
@@ -59,22 +61,12 @@ function postRender() {
   }
   postRender()
 
+ console.log($("#1")); 
+// $(function(){
 
-  let index = 2
-const listItems = $('.persons');
-$('button').on('click', function() {
-    
-$('li').append(function (index) {
-    return $('<span>', {
-      text: ' (' + index + ' метод)'
-    })
-  });
-})
-
-
-
-
-
-
-
-listItems.addClass('person-added');
+// $(".persons").slice(0,2).show();
+// $('#load-more').on('click', function(e) {
+    // e.preventDefault();
+    // $(".persons:hidden").slice(0,2).slideDown()
+// })
+// })
