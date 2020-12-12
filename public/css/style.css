@@ -7,6 +7,7 @@ body {
 }
 #app {
   display: grid;
+  
   border: 4px solid green;
   background-color: rgb(243, 243, 243);
   grid-template-columns: 1fr 0fr;

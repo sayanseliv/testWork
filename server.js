@@ -32,7 +32,7 @@ app.get("/api/persons", function (req, res) {
   }
   persons.fetchPersons().then((data) => {
     let personData = Object.assign({}, data);
-    //http://localhost:7070/api/persons при запущенном сервере, нажимаем обновить, файл создаётся в папке csv.
+    //файл создаётся в папке csv. Могу и кодировать
     fs.writeFile(
       `${DATA_FILE_PATH}${dateFileName}`,
       personData.data

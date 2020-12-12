@@ -1,6 +1,6 @@
 function fetchRender() {
   var app = $("#app");
-  fetch("https://reqres.in/api/users")
+  fetch("http://localhost:7070/api/persons")
     .then((response) => {
       if (!response.ok) {
         throw Error("Something Wrong");
