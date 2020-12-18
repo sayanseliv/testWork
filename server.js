@@ -3,7 +3,7 @@ const app = express();
 const port = 7070;
 const bodyParser = require("body-parser");
 const fs = require("fs");
-
+const path = require('path');
 const persons = require("./fetch/persons");
 
 const DATA_FILE_PATH = "csv/";
@@ -24,7 +24,13 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/api/persons", function (req, res) {
+const router = express.Router();
+
+router.get('/',function(req,res){
+  res.sendFile(path.join(__dirname+'/public/index.html'));
+});
+
+router.get("/api/persons", function (req, res) {
   let date = new Date();
   const dateFileName = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}_${date.getHours()}_${date.getMinutes()}_${date.getSeconds()}.csv`;
   if (res.statusCode !== 200) {
@@ -49,7 +55,7 @@ app.get("/api/persons", function (req, res) {
     return res.json(personData);
   });
 });
-
+app.use('/', router);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
